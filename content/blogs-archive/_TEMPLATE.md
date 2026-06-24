@@ -6,6 +6,9 @@ tags: ["Tag One", "Tag Two"]
 coverImage: "/projects/example/cover.webp"
 featured: false
 readingTime: 5
+# Optional: set this to link the card straight out to an external post (e.g. Medium)
+# instead of rendering the body below. The body text is then ignored.
+# externalUrl: "https://medium.com/@you/your-post-slug"
 ---
 
 Write the post body here in Markdown. The first paragraph is a good place for

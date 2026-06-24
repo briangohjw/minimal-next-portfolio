@@ -32,8 +32,8 @@ export const metadata: Metadata = {
   },
 };
 
-export default function IndexPage() {
-  const featuredBlogs = getFeaturedBlogs();
+export default async function IndexPage() {
+  const featuredBlogs = await getFeaturedBlogs();
   // Structured data for personal portfolio
   const personSchema = {
     "@context": "https://schema.org",

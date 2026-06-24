@@ -59,11 +59,11 @@ export const pagesConfig: PagesConfig = {
   blogs: {
     title: "Blogs",
     description:
-      "Thoughts on AI, software engineering, and interesting events I've attended.",
+      "A collection of my thoughts on modern technology and industry events.",
     metadata: {
       title: "Blogs",
       description:
-        "Brian Goh's blog — thoughts on AI, software engineering, and interesting events he's attended.",
+        "A collection of Brian Goh's thoughts on modern technology and industry events.",
     },
   },
   experience: {

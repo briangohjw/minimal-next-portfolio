@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import Script from "next/script";
 
 import { AnimatedSection } from "@/components/common/animated-section";
@@ -86,6 +86,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     post = await getBlogPost(slug);
   } catch {
     notFound();
+  }
+
+  if (post.externalUrl) {
+    redirect(post.externalUrl);
   }
 
   const formattedDate = new Date(post.date).toLocaleDateString("en-US", {

@@ -6,7 +6,7 @@ import { AnimatedSection } from "@/components/common/animated-section";
 import PageContainer from "@/components/common/page-container";
 import { pagesConfig } from "@/config/pages";
 import { siteConfig } from "@/config/site";
-import { getAllBlogsMeta } from "@/lib/blogs";
+import { getAllBlogsWithMedium } from "@/lib/blogs";
 
 export const metadata: Metadata = {
   title: pagesConfig.blogs.metadata.title,
@@ -38,8 +38,8 @@ export const metadata: Metadata = {
   },
 };
 
-export default function BlogsPage() {
-  const blogs = getAllBlogsMeta();
+export default async function BlogsPage() {
+  const blogs = await getAllBlogsWithMedium();
 
   // CollectionPage + Blog JSON-LD for the listing page
   const blogListSchema = {

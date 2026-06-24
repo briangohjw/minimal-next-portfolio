@@ -8,6 +8,7 @@ export const siteConfig = {
   links: {
     github: "https://github.com/briangohjw",
     templateRepo: "https://github.com/namanbarkiya/minimal-next-portfolio",
+    medium: "https://medium.com/@briangoh.junw",
   },
   ogImage: "/ogimage.png",
   iconIco:

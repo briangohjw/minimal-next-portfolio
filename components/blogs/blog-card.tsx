@@ -16,10 +16,13 @@ export default function BlogCard({ blog }: BlogCardProps) {
   });
 
   const isoDate = new Date(blog.date).toISOString();
+  const isExternal = Boolean(blog.externalUrl);
 
   return (
     <Link
-      href={`/blogs/${blog.slug}`}
+      href={isExternal ? blog.externalUrl! : `/blogs/${blog.slug}`}
+      target={isExternal ? "_blank" : undefined}
+      rel={isExternal ? "noopener noreferrer" : undefined}
       className="group relative flex flex-col bg-background border border-border rounded-lg overflow-hidden h-full transition-all duration-300 hover:shadow-lg hover:border-primary/40 hover:-translate-y-0.5"
     >
       <article className="flex flex-col h-full">
@@ -32,7 +35,6 @@ export default function BlogCard({ blog }: BlogCardProps) {
               fill
               className="object-cover transition-transform duration-500 group-hover:scale-105"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
           </div>
         )}
 
@@ -84,8 +86,17 @@ export default function BlogCard({ blog }: BlogCardProps) {
               className="inline-flex items-center gap-0.5 text-xs font-medium text-muted-foreground group-hover:text-primary transition-colors duration-200"
               aria-hidden="true"
             >
-              Read
-              <Icons.chevronRight className="w-3 h-3 transition-transform duration-200 group-hover:translate-x-0.5" />
+              {isExternal ? (
+                <>
+                  Read on Medium
+                  <Icons.externalLink className="w-3 h-3 ml-0.5" />
+                </>
+              ) : (
+                <>
+                  Read
+                  <Icons.chevronRight className="w-3 h-3 transition-transform duration-200 group-hover:translate-x-0.5" />
+                </>
+              )}
             </span>
           </div>
         </div>
