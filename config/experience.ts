@@ -24,8 +24,8 @@ export const experiences: ExperienceInterface[] = [
     startDate: new Date("2025-12-01"),
     endDate: "Present",
     description: [
-      "Drive end-to-end presales for enterprise AI deployments across APAC, from technical discovery to SOW drafting.",
-      "Build custom technical demos — agentic workflows, RAG, and MCP integrations — for enterprise accounts.",
+      "Drive technical discovery, solutioning, custom POCs, and SOW drafting for 12+ enterprise AI accounts across APAC.",
+      "Build custom technical demos — agentic workflows, RAG, and MCP — for enterprise accounts.",
       "Lead bilingual (Mandarin/English) technical workshops and POC engagements across the region.",
     ],
     achievements: [
@@ -45,12 +45,13 @@ export const experiences: ExperienceInterface[] = [
     startDate: new Date("2024-05-01"),
     endDate: new Date("2025-12-01"),
     description: [
+      "Built fiat/crypto escheatment, restriction, and reconciliation features on PayPal's dormancy platform (5.5M+ users, 4 components).",
       "Designed idempotency controls and cache-based process locks to prevent losses in Brazil's unclaimed money workflow.",
       "Built a dormancy prediction model and championed it through PayPal's internal AI hackathon.",
-      "Architected a dynamic account restriction system using a rule-based expression parser across fiat and crypto balances.",
     ],
     achievements: [
-      "Prevented potential financial losses exceeding $1M/cycle by designing idempotency controls and cache-based process locks for Brazil's unclaimed money workflow (800K+ users across 4 integrated components).",
+      "Built and shipped fiat and crypto escheatment, account closure and restriction, and reconciliation features on PayPal's dormancy compliance platform — production rollouts across the US and Brazil, spanning 4 integrated components and 5.5M+ users.",
+      "Prevented potential financial losses exceeding $1M/cycle by designing idempotency controls and cache-based process locks for Brazil's unclaimed money workflow (800K+ users).",
       "Built a dormancy prediction model (85% F1-score) and pitched it to business leadership and sales teams — emerged champion in PayPal's internal AI hackathon (Code.AI).",
       "Architected a dynamic account restriction system using an ANTLR4 expression parser for configurable rule-based validation across fiat and crypto balances, achieving a 100% production rollout success rate.",
     ],
@@ -66,8 +67,7 @@ export const experiences: ExperienceInterface[] = [
     startDate: new Date("2022-06-01"),
     endDate: new Date("2024-05-01"),
     description: [
-      "Led cross-team integrations, onboarding 10+ client engineering teams onto production APIs.",
-      "Built a content moderation platform from scratch, processing 5.5M items/month across 10+ internal products.",
+      "Built a content moderation platform from scratch, processing 5.5M items/month, and onboarded 10+ client teams onto it.",
       "Fine-tuned LLaMA and other ML models, building end-to-end training-to-production pipelines on GCP.",
     ],
     achievements: [
@@ -88,7 +88,7 @@ export const experiences: ExperienceInterface[] = [
     startDate: new Date("2021-05-01"),
     endDate: new Date("2021-08-01"),
     description: [
-      "Built information extraction pipelines to extract key entities from subpoena documents.",
+      "Built information extraction pipelines for subpoena documents, hitting >80% entity accuracy.",
       "Built a model and demo API to validate customer identification documents using OCR and NER.",
       "Tested and analysed multiprocessing performance on model inference tasks.",
     ],
@@ -109,7 +109,7 @@ export const experiences: ExperienceInterface[] = [
     startDate: new Date("2020-08-01"),
     endDate: new Date("2020-12-01"),
     description: [
-      "Managed the end-to-end data pipeline for high-net-worth clients, maintaining warehouse code and lead allocation logic.",
+      "Managed the end-to-end data pipeline for high-net-worth clients using SQL and dbt.",
       "Conducted a deep-dive SQL analysis of COVID-19's impact on 100,000 platform users.",
       "Built dashboards for the Marketing, Client Engagement, and Product teams.",
     ],
@@ -151,9 +151,9 @@ export const experiences: ExperienceInterface[] = [
     startDate: new Date("2019-05-01"),
     endDate: new Date("2019-08-01"),
     description: [
+      "Built a Python web crawler to automate competitor intelligence gathering, growing category assortment of key sellers by 140%.",
       "Analysed campaign performance, market trends, and potential fraudulent transactions.",
       "Automated repetitive daily tasks using VBA scripts and Chrome extensions.",
-      "Built a Python web crawler for competitor intelligence, growing category assortment by 140%.",
     ],
     achievements: [
       "Conducted data analysis and generated reports on campaign performance, market trends, and potential fraudulent transactions.",
@@ -173,9 +173,8 @@ export const experiences: ExperienceInterface[] = [
     startDate: new Date("2018-02-01"),
     endDate: new Date("2018-06-01"),
     description: [
-      "Independently ran ASPIREAlpha, a Data Science Boot Camp, managing sales, communication, and logistics end to end.",
-      "Hosted 55 stakeholders across the program.",
-      "Grew the boot camp's participation rate by 70% and revenue by 30% year-on-year.",
+      "Independently ran ASPIREAlpha (Data Science Boot Camp) end to end, growing participation by 70% and revenue by 30% year-on-year.",
+      "Managed sales, communication, and logistics for the program, hosting 55 stakeholders.",
     ],
     achievements: [
       "Independently ran ASPIREAlpha (Data Science Boot Camp), managing sales, communication, and logistics end to end, hosting a total of 55 stakeholders.",
