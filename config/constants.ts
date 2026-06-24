@@ -60,7 +60,17 @@ export type ValidSkills =
   | "FastAPI"
   | "SQL"
   | "NoSQL"
-  | "Framer Motion";
+  | "Framer Motion"
+  | "Presales"
+  | "RAG"
+  | "MCP"
+  | "LLM"
+  | "ANTLR4"
+  | "dbt"
+  | "Tableau"
+  | "VBA"
+  | "Metabase"
+  | "OCR";
 
 export type ValidCategory =
   | "Full Stack"
