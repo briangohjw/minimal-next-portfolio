@@ -8,17 +8,17 @@ import { AnimatedSection } from "@/components/common/animated-section";
 import { AnimatedText } from "@/components/common/animated-text";
 import { ClientPageWrapper } from "@/components/common/client-page-wrapper";
 import { Icons } from "@/components/common/icons";
-import ContributionCard from "@/components/contributions/contribution-card";
+// import ContributionCard from "@/components/contributions/contribution-card";
 import ExperienceCard from "@/components/experience/experience-card";
 import ProjectCard from "@/components/projects/project-card";
-import SkillsCard from "@/components/skills/skills-card";
+// import SkillsCard from "@/components/skills/skills-card";
 import { Button, buttonVariants } from "@/components/ui/button";
-import { featuredContributions } from "@/config/contributions";
+// import { featuredContributions } from "@/config/contributions";
 import { experiences } from "@/config/experience";
 import { pagesConfig } from "@/config/pages";
 import { featuredProjects } from "@/config/projects";
 import { siteConfig } from "@/config/site";
-import { featuredSkills } from "@/config/skills";
+// import { featuredSkills } from "@/config/skills";
 import { getFeaturedBlogs } from "@/lib/blogs";
 import { cn } from "@/lib/utils";
 import profileImg from "@/public/profile-img.jpg";
@@ -26,7 +26,7 @@ import profileImg from "@/public/profile-img.jpg";
 export const metadata: Metadata = {
   title: `${pagesConfig.home.metadata.title}`,
   description:
-    "Naman Barkiya - Applied AI Engineer working at the intersection of AI, data, and scalable software systems. Explore my projects, experience, and contributions.",
+    "Brian Goh - Software engineer turned presales engineer, bridging deep technical expertise with customer-facing AI and data solutions.",
   alternates: {
     canonical: siteConfig.url,
   },
@@ -41,7 +41,7 @@ export default function IndexPage() {
     name: siteConfig.authorName,
     url: siteConfig.url,
     image: siteConfig.ogImage,
-    jobTitle: "Applied AI Engineer",
+    jobTitle: "Presales Engineer",
     sameAs: [siteConfig.links.github, siteConfig.links.twitter],
   };
 
@@ -55,7 +55,7 @@ export default function IndexPage() {
     offers: {
       "@type": "Offer",
       price: "0",
-      priceCurrency: "USD",
+      priceCurrency: "SGD",
     },
     author: {
       "@type": "Person",
@@ -85,7 +85,7 @@ export default function IndexPage() {
             width={100}
             sizes="100vw"
             className="bg-primary rounded-full mb-0 h-auto md:mb-2 w-[60%] max-w-[16rem] border-8 border-primary"
-            alt="Naman Barkiya - Applied AI Engineer Portfolio"
+            alt="Brian Goh - Presales Engineer Portfolio"
             priority
           />
           <AnimatedText
@@ -93,19 +93,18 @@ export default function IndexPage() {
             delay={0.2}
             className="font-heading text-3xl sm:text-5xl md:text-6xl lg:text-7xl"
           >
-            Naman Barkiya
+            Brian Goh
           </AnimatedText>
           <AnimatedText
             as="h3"
             delay={0.4}
             className="font-heading text-base sm:text-xl md:text-xl lg:text-2xl"
           >
-            Applied AI Engineer
+            Presales Engineer
           </AnimatedText>
           <div className="mt-4 max-w-[42rem] text-center">
             <p className="leading-normal text-muted-foreground text-sm sm:text-base">
-              Software engineer working at the intersection of AI, data, and
-              scalable software systems.
+              Software engineer turned presales engineer, bridging deep technical expertise with customer-facing AI and data solutions.
             </p>
           </div>
 
@@ -130,7 +129,7 @@ export default function IndexPage() {
                     size: "lg",
                   })
                 )}
-                aria-label="Contact Naman Barkiya"
+                aria-label="Contact Brian Goh"
               >
                 <Icons.contact className="w-4 h-4 mr-2" /> Contact
               </Link>
@@ -222,7 +221,7 @@ export default function IndexPage() {
           </Link>
         </AnimatedText>
       </AnimatedSection>
-      <AnimatedSection
+      {/* <AnimatedSection
         direction="up"
         className="container space-y-6 bg-muted py-10 my-14"
         id="contributions"
@@ -250,7 +249,7 @@ export default function IndexPage() {
             </Button>
           </Link>
         </AnimatedText>
-      </AnimatedSection>
+      </AnimatedSection> */}
       <AnimatedSection
         direction="up"
         className="container space-y-6 py-10 my-14"
@@ -291,7 +290,7 @@ export default function IndexPage() {
           </Link>
         </AnimatedText>
       </AnimatedSection>
-      <AnimatedSection
+      {/* <AnimatedSection
         direction="up"
         className="container space-y-6 bg-muted py-10 my-14"
         id="skills"
@@ -319,7 +318,7 @@ export default function IndexPage() {
             </Button>
           </Link>
         </AnimatedText>
-      </AnimatedSection>
+      </AnimatedSection> */}
     </ClientPageWrapper>
   );
 }
