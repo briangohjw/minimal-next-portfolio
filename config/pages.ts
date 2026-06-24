@@ -56,14 +56,6 @@ export const pagesConfig: PagesConfig = {
         "Brian Goh's open-source contributions and community involvement.",
     },
   },
-  resume: {
-    title: "Resume",
-    description: "Brian Goh's resume.",
-    metadata: {
-      title: "Resume",
-      description: "Brian Goh's resume.",
-    },
-  },
   blogs: {
     title: "Blogs",
     description:
