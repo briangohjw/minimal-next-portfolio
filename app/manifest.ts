@@ -5,7 +5,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "Brian Goh | Presales Engineer",
     short_name: "Brian Goh",
     description:
-      "Brian Goh - Software engineer turned presales engineer, bridging deep technical expertise with customer-facing AI and data solutions.",
+      "Brian Goh - Software engineer turned presales engineer, curious about how things work, why they matter, and who they help.",
     start_url: "/",
     display: "standalone",
     background_color: "#ffffff",

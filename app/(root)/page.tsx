@@ -26,7 +26,7 @@ import profileImg from "@/public/profile-img.jpg";
 export const metadata: Metadata = {
   title: { absolute: siteConfig.name },
   description:
-    "Brian Goh - Software engineer turned presales engineer, bridging deep technical expertise with customer-facing AI and data solutions.",
+    "Brian Goh - Software engineer turned presales engineer, curious about how things work, why they matter, and who they help.",
   alternates: {
     canonical: siteConfig.url,
   },
@@ -104,7 +104,7 @@ export default async function IndexPage() {
           </AnimatedText>
           <div className="mt-4 max-w-[42rem] text-center">
             <p className="leading-normal text-muted-foreground text-sm sm:text-base">
-              Software engineer turned presales engineer, bridging deep technical expertise with customer-facing AI and data solutions.
+              Software engineer turned presales engineer, curious about how things work, why they matter, and who they help.
             </p>
           </div>
 

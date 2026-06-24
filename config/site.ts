@@ -3,7 +3,7 @@ export const siteConfig = {
   authorName: "Brian Goh",
   username: "briangohjw",
   description:
-    "Brian Goh - Software engineer turned presales engineer, bridging deep technical expertise with customer-facing AI and data solutions.",
+    "Brian Goh - Software engineer turned presales engineer, curious about how things work, why they matter, and who they help.",
   url: "https://briangohjw.com",
   links: {
     github: "https://github.com/briangohjw",
