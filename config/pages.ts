@@ -32,7 +32,8 @@ export const pagesConfig: PagesConfig = {
   },
   projects: {
     title: "Projects",
-    description: "Showcasing impactful projects and technical achievements.",
+    description:
+      "Personal projects I've tinkered with, out of curiosity or to solve a pain point in my life.",
     metadata: {
       title: "Projects",
       description: "Brian Goh's projects in building web applications.",
