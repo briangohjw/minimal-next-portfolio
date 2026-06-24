@@ -70,7 +70,10 @@ export type ValidSkills =
   | "Tableau"
   | "VBA"
   | "Metabase"
-  | "OCR";
+  | "OCR"
+  | "asyncpg"
+  | "Recharts"
+  | "Docker Compose";
 
 export type ValidCategory =
   | "Full Stack"

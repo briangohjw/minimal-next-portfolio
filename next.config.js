@@ -4,6 +4,7 @@ const nextConfig = {
     remotePatterns: [
       { protocol: "https", hostname: "cdn-images-1.medium.com" },
       { protocol: "https", hostname: "miro.medium.com" },
+      { protocol: "https", hostname: "res.cloudinary.com" },
     ],
   },
   async headers() {

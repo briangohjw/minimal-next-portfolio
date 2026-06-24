@@ -3,6 +3,7 @@ import { ValidCategory, ValidExpType, ValidSkills } from "./constants";
 interface PagesInfoInterface {
   title: string;
   imgArr: string[];
+  videoArr?: string[];
   description?: string;
 }
 
@@ -24,10 +25,12 @@ export interface ProjectInterface {
   endDate: Date;
   companyLogoImg: any;
   descriptionDetails: DescriptionDetailsInterface;
+  implementationDetails?: DescriptionDetailsInterface;
+  futureImprovementsDetails?: DescriptionDetailsInterface;
   pagesInfoArr: PagesInfoInterface[];
 }
 
-// Template — copy this shape when adding a new project below.
+// Template - copy this shape when adding a new project below.
 // {
 //   id: "portfolio-template",
 //   companyName: "Portfolio Website (130+ GitHub stars)",
@@ -70,6 +73,67 @@ export interface ProjectInterface {
 // },
 
 export const Projects: ProjectInterface[] = [
+  {
+    id: "llm-observatory",
+    companyName: "LLM Observatory",
+    type: "Personal",
+    category: ["Full Stack", "Backend"],
+    shortDescription:
+      "A self-hosted proxy and monitoring dashboard for the Anthropic API. Every LLM call flows through it, gets logged to Postgres, and surfaces in a real-time dashboard for cost, latency, and token usage.",
+    githubLink: "https://github.com/briangohjw/llm-observatory/tree/main",
+    techStack: [
+      "Python",
+      "FastAPI",
+      "PostgreSQL",
+      "asyncpg",
+      "React",
+      "Tailwind CSS",
+      "Recharts",
+      "Docker Compose",
+    ],
+    startDate: new Date("2026-06-25"),
+    endDate: new Date("2026-06-25"),
+    companyLogoImg: "https://res.cloudinary.com/dsvbbow4f/image/upload/v1782321419/Screenshot_2026-06-25_at_1.16.47_AM_lzbwzm.png",
+    pagesInfoArr: [
+      {
+        title: "Overview Dashboard",
+        description:
+          "A live budget meter, daily cost and request charts, and top-level stats for the current period, with spend broken down by model and feature so runaway prompts or oversized models get caught early.",
+        imgArr: ["https://res.cloudinary.com/dsvbbow4f/image/upload/v1782321419/Screenshot_2026-06-25_at_1.16.47_AM_lzbwzm.png"],
+      },
+      {
+        title: "Chat Playground",
+        description:
+          "Per-query stats live as the response streams in: time-to-first-token (TTFT), total latency, tokens per second, input/output token counts, and cost. Every message is logged and visible in the queries tab, with the full prompt and response text on click.",
+        imgArr: [],
+        videoArr: [
+          "https://player.cloudinary.com/embed/?cloud_name=dsvbbow4f&public_id=Untitled_2_ppxxpe",
+        ],
+      },
+    ],
+    descriptionDetails: {
+      paragraphs: [
+        "LLM Observatory is a self-hosted proxy and monitoring dashboard for the Anthropic API. Every LLM call my applications make flows through it, gets logged to Postgres, and surfaces in a real-time dashboard, giving full visibility into cost, latency, and token usage as it happens.",
+        "LLM costs are billed per token and accumulate fast: a prompt that works fine in testing can get expensive at scale if it's longer than it needs to be, or if it's running on a heavier model where a lighter one would do. Catching that early, rather than at the end of the month, is the whole point of the project.",
+      ],
+      bullets: [],
+    },
+    implementationDetails: {
+      paragraphs: [
+        "The backend is a FastAPI proxy that streams the Anthropic response back to the caller without buffering it. Metrics are extracted from the SSE stream as it passes through and written to Postgres via asyncpg only after the stream completes, keeping the critical path clean. The frontend is React with Recharts, served via nginx, with the whole stack wired together in Docker Compose.",
+      ],
+      bullets: [],
+    },
+    futureImprovementsDetails: {
+      paragraphs: [],
+      bullets: [
+        "Retain structured metrics long-term while archiving or dropping raw prompt text after a retention window, to keep full-request storage viable at scale.",
+        "Add alerting on spend spikes and request sampling for high-volume endpoints.",
+        "Add multi-provider support across OpenAI, Gemini, and Anthropic.",
+        "Explore semantic caching - returning cached responses for similar prompts via embedding similarity rather than exact match - to cut costs for applications with overlapping user queries.",
+      ],
+    },
+  },
   {
     id: "spirit-island-multiplayer-monitor",
     companyName: "Spirit Island Multiplayer Monitor",

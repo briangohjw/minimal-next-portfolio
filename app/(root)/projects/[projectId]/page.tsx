@@ -116,6 +116,30 @@ export default async function Project({ params }: ProjectPageProps) {
         />
       </div>
 
+      {project.implementationDetails && (
+        <div className="mb-7 ">
+          <h2 className="inline-block font-heading text-3xl leading-tight lg:text-3xl mb-2">
+            Implementation
+          </h2>
+          <ProjectDescription
+            paragraphs={project.implementationDetails.paragraphs}
+            bullets={project.implementationDetails.bullets}
+          />
+        </div>
+      )}
+
+      {project.futureImprovementsDetails && (
+        <div className="mb-7 ">
+          <h2 className="inline-block font-heading text-3xl leading-tight lg:text-3xl mb-2">
+            Future Improvements
+          </h2>
+          <ProjectDescription
+            paragraphs={project.futureImprovementsDetails.paragraphs}
+            bullets={project.futureImprovementsDetails.bullets}
+          />
+        </div>
+      )}
+
       <div className="mb-7 ">
         <h2 className="inline-block font-heading text-3xl leading-tight lg:text-3xl mb-5">
           Page Info
@@ -137,6 +161,19 @@ export default async function Project({ params }: ProjectPageProps) {
                   className="my-4 rounded-md border bg-muted transition-colors"
                   priority
                 />
+              ))}
+              {page.videoArr?.map((video, ind) => (
+                <div
+                  key={ind}
+                  className="relative my-4 aspect-video w-full max-w-[720px] overflow-hidden rounded-md border bg-muted"
+                >
+                  <iframe
+                    src={video}
+                    allow="autoplay; fullscreen"
+                    allowFullScreen
+                    className="absolute inset-0 h-full w-full"
+                  />
+                </div>
               ))}
             </div>
           </div>
