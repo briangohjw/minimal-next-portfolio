@@ -1,5 +1,5 @@
 export const siteConfig = {
-  name: "Brian Goh - Presales Engineer",
+  name: "Brian Goh | Presales Engineer",
   authorName: "Brian Goh",
   username: "briangohjw",
   description:
