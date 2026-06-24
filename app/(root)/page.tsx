@@ -104,7 +104,10 @@ export default async function IndexPage() {
           </AnimatedText>
           <div className="mt-4 max-w-[42rem] text-center">
             <p className="leading-normal text-muted-foreground text-sm sm:text-base">
-              Software engineer turned presales engineer, curious about how things work, why they matter, and who they help.
+              Software engineer turned presales engineer, curious about how
+              things work,
+              <br />
+              why they matter, and who they help.
             </p>
           </div>
 
