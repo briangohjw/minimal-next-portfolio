@@ -30,15 +30,9 @@ export interface BlogPost extends BlogMeta {
   contentHtml: string;
 }
 
-function ensureBlogsDir() {
-  if (!fs.existsSync(BLOGS_DIR)) {
-    fs.mkdirSync(BLOGS_DIR, { recursive: true });
-  }
-}
-
 /** Returns all blog slugs (file names without .md) */
 export function getAllBlogSlugs(): string[] {
-  ensureBlogsDir();
+  if (!fs.existsSync(BLOGS_DIR)) return [];
   return fs
     .readdirSync(BLOGS_DIR)
     .filter((f) => f.endsWith(".md"))
@@ -47,7 +41,7 @@ export function getAllBlogSlugs(): string[] {
 
 /** Returns metadata for all blogs, sorted newest first */
 export function getAllBlogsMeta(): BlogMeta[] {
-  ensureBlogsDir();
+  if (!fs.existsSync(BLOGS_DIR)) return [];
   const slugs = getAllBlogSlugs();
 
   const blogs = slugs.map((slug) => {
