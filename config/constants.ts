@@ -73,7 +73,13 @@ export type ValidSkills =
   | "OCR"
   | "asyncpg"
   | "Recharts"
-  | "Docker Compose";
+  | "Docker Compose"
+  | "RDF"
+  | "SPARQL"
+  | "rdflib"
+  | "Pyvis"
+  | "Ollama"
+  | "Streamlit";
 
 export type ValidCategory =
   | "Full Stack"

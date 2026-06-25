@@ -74,6 +74,62 @@ export interface ProjectInterface {
 
 export const Projects: ProjectInterface[] = [
   {
+    id: "ai-knowledge-graph",
+    companyName: "AI Knowledge Graph",
+    type: "Personal",
+    category: ["Full Stack", "Backend"],
+    shortDescription:
+      "An interactive RDF knowledge graph of AI concepts - LLMs, RAG, agentic AI, orchestration frameworks and more - queryable via a local LLM using the GraphRAG pattern, with retrieval made fully visible on the graph.",
+    githubLink: "https://github.com/briangohjw/ai-knowledge-graph",
+    techStack: ["Python", "RDF", "SPARQL", "rdflib", "Pyvis", "Ollama", "Streamlit"],
+    startDate: new Date("2026-06-26"),
+    endDate: new Date("2026-06-26"),
+    companyLogoImg: "https://res.cloudinary.com/dsvbbow4f/image/upload/v1782408912/Screenshot_2026-06-26_at_1.34.41_AM_jwfz5c.png",
+    pagesInfoArr: [
+      {
+        title: "Knowledge Graph",
+        description:
+          "Interactive graph of AI concepts with physics-based layout and hover tooltips. Nodes represent technologies and ideas; edges represent semantic relationships like 'powers' and 'resolvesHallucinationUsing'. Filter by edge type or focus on a subgraph from the sidebar.",
+        imgArr: [],
+        videoArr: [],
+      },
+      {
+        title: "GraphRAG Chat",
+        description:
+          "Ask a question in natural language. SPARQL queries the graph to retrieve the most relevant nodes and edges, which are passed as context to a local LLM via Ollama. After answering, the retrieved nodes are highlighted on the graph - making the retrieval step fully visible and auditable, unlike vector RAG.",
+        imgArr: [],
+        videoArr: [
+          "https://player.cloudinary.com/embed/?cloud_name=dsvbbow4f&public_id=KG_Demo_AI_Test_my3bmw",
+        ],
+      },
+    ],
+    descriptionDetails: {
+      paragraphs: [
+        "I had a growing collection of notes on AI topics - LLMs, agentic AI, RAG, orchestration frameworks and more - and got curious what the relationships between these concepts would look like as a knowledge graph. This project is the result.",
+        "Concepts and their relationships are stored as W3C-standard RDF triples in a Turtle file. At runtime, SPARQL queries retrieve the most relevant nodes and edges for a given question, which are passed as context to a local LLM running via Ollama. Unlike vector RAG, the retrieval step is fully visible: after each answer, the nodes used as context are highlighted on the interactive graph.",
+      ],
+      bullets: [],
+    },
+    implementationDetails: {
+      paragraphs: [],
+      bullets: [
+        "Concepts and relationships stored as RDF triples in a .ttl file, with named predicates like 'powers', 'resolvesHallucinationUsing', and 'extends'.",
+        "rdflib builds and queries the in-memory graph; SPARQL selects the relevant subgraph at runtime.",
+        "Pyvis renders the interactive canvas with physics-based layout and hover tooltips.",
+        "Ollama (llama3.1) runs the LLM entirely locally - no data leaves the machine.",
+        "Streamlit ties the graph view and chat interface together in a single dashboard.",
+      ],
+    },
+    futureImprovementsDetails: {
+      paragraphs: [],
+      bullets: [
+        "Semantic search - embed node labels and descriptions into a vector store to find concepts by meaning rather than exact keyword match, feeding richer context into the GraphRAG retrieval.",
+        "Multi-hop reasoning - follow chains of relationships across the graph to answer questions that span multiple concepts, not just direct neighbours.",
+        "Temporal dimension - version the graph over time to track how understanding of a topic has grown or shifted.",
+      ],
+    },
+  },
+  {
     id: "llm-observatory",
     companyName: "LLM Observatory",
     type: "Personal",
