@@ -24,6 +24,12 @@ export interface ProjectInterface {
   startDate: Date;
   endDate: Date;
   companyLogoImg: any;
+  // Optional looping preview (e.g. a Loom GIF) shown on the home page card
+  // instead of the static logo, to hint that the project has a video demo.
+  cardPreviewGif?: string;
+  // Optional demo video (embed URL). Rendered as the hero on the project page,
+  // and played with sound in a popup when the home card preview is clicked.
+  demoVideoUrl?: string;
   descriptionDetails: DescriptionDetailsInterface;
   implementationDetails?: DescriptionDetailsInterface;
   futureImprovementsDetails?: DescriptionDetailsInterface;
@@ -150,21 +156,33 @@ export const Projects: ProjectInterface[] = [
     startDate: new Date("2026-06-25"),
     endDate: new Date("2026-06-25"),
     companyLogoImg: "https://res.cloudinary.com/dsvbbow4f/image/upload/v1782321419/Screenshot_2026-06-25_at_1.16.47_AM_lzbwzm.png",
+    cardPreviewGif:
+      "https://cdn.loom.com/sessions/thumbnails/19563ead3964477694e80be4e0a1f97c-6b24d3dc13e85d5c-full-play.gif",
+    demoVideoUrl: "https://www.loom.com/embed/19563ead3964477694e80be4e0a1f97c",
     pagesInfoArr: [
       {
         title: "Overview Dashboard",
         description:
-          "A live budget meter, daily cost and request charts, and top-level stats for the current period, with spend broken down by model and feature so runaway prompts or oversized models get caught early.",
-        imgArr: ["https://res.cloudinary.com/dsvbbow4f/image/upload/v1782321419/Screenshot_2026-06-25_at_1.16.47_AM_lzbwzm.png"],
+          "Top-level stats for the last 7 days - total cost, request count, average latency, and error rate - plus a monthly budget meter and daily cost and request-volume charts. The whole view auto-refreshes, so runaway spend or a latency spike shows up the moment it happens.",
+        imgArr: ["https://res.cloudinary.com/dsvbbow4f/image/upload/v1784369745/Screenshot_2026-07-18_at_6.15.39_PM_qpl9wn.png"],
       },
       {
         title: "Chat Playground",
         description:
-          "Per-query stats live as the response streams in: time-to-first-token (TTFT), total latency, tokens per second, input/output token counts, and cost. Every message is logged and visible in the queries tab, with the full prompt and response text on click.",
-        imgArr: [],
-        videoArr: [
-          "https://player.cloudinary.com/embed/?cloud_name=dsvbbow4f&public_id=Untitled_2_ppxxpe",
-        ],
+          "An interactive playground for running prompts through the proxy against any configured model. Per-message stats stream in live - time-to-first-token (TTFT), total latency, tokens per second, input/output token counts, and cost in SGD - so you can feel the speed and price difference between models as you chat.",
+        imgArr: ["https://res.cloudinary.com/dsvbbow4f/image/upload/v1784369195/Screenshot_2026-07-18_at_6.06.27_PM_vl1neq.png"],
+      },
+      {
+        title: "Models",
+        description:
+          "A per-model breakdown of usage and spend: requests, input/output tokens, total cost, and average latency for each model, alongside a cost-split chart. Makes it obvious at a glance when an expensive model is doing work a cheaper one could handle.",
+        imgArr: ["https://res.cloudinary.com/dsvbbow4f/image/upload/v1784369247/Screenshot_2026-07-18_at_6.07.21_PM_jhploj.png"],
+      },
+      {
+        title: "Queries",
+        description:
+          "A searchable log of every request through the proxy, filterable by model or prompt ID. Each row captures the timestamp, model, prompt ID, user, token counts, cost, latency, and status - a full audit trail for debugging and cost attribution.",
+        imgArr: ["https://res.cloudinary.com/dsvbbow4f/image/upload/v1784369301/Screenshot_2026-07-18_at_6.07.54_PM_d4dgpq.png"],
       },
     ],
     descriptionDetails: {

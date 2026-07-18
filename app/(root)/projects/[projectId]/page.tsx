@@ -89,14 +89,28 @@ export default async function Project({ params }: ProjectPageProps) {
         </div>
       </div>
 
-      <Image
-        src={project.companyLogoImg}
-        alt={project.companyName}
-        width={720}
-        height={405}
-        className="my-8 rounded-md border bg-muted transition-colors"
-        priority
-      />
+      {project.demoVideoUrl ? (
+        <div
+          className="relative my-8 w-full overflow-hidden rounded-md border bg-muted"
+          style={{ height: 0, paddingBottom: "58.002148227712134%" }}
+        >
+          <iframe
+            src={project.demoVideoUrl}
+            allow="autoplay; fullscreen"
+            allowFullScreen
+            className="absolute inset-0 h-full w-full"
+          />
+        </div>
+      ) : (
+        <Image
+          src={project.companyLogoImg}
+          alt={project.companyName}
+          width={720}
+          height={405}
+          className="my-8 rounded-md border bg-muted transition-colors"
+          priority
+        />
+      )}
 
       <div className="mb-7 ">
         <h2 className="inline-block font-heading text-3xl leading-tight lg:text-3xl mb-2">
