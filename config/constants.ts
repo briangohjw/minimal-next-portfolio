@@ -82,13 +82,13 @@ export type ValidSkills =
   | "Streamlit";
 
 export type ValidCategory =
-  | "Full Stack"
-  | "Frontend"
-  | "Backend"
-  | "UI/UX"
-  | "Web Dev"
-  | "Mobile Dev"
-  | "3D Modeling";
+  | "LLM"
+  | "RAG"
+  | "Knowledge Graphs"
+  | "Observability"
+  | "Cost Monitoring"
+  | "Automation"
+  | "Developer Tooling";
 
 export type ValidExpType = "Personal" | "Professional";
 

@@ -41,7 +41,7 @@ export interface ProjectInterface {
 //   id: "portfolio-template",
 //   companyName: "Portfolio Website (130+ GitHub stars)",
 //   type: "Personal",
-//   category: ["Web Dev", "Frontend", "UI/UX"],
+//   category: ["LLM", "Observability"],
 //   shortDescription:
 //     "Open-source Next.js portfolio template recognized and forked by developers worldwide, optimized for SEO/AEO and performance.",
 //   websiteLink: "https://nbarkiya.xyz",
@@ -83,7 +83,7 @@ export const Projects: ProjectInterface[] = [
     id: "ai-knowledge-graph",
     companyName: "AI Knowledge Graph",
     type: "Personal",
-    category: ["Full Stack", "Backend"],
+    category: ["LLM", "RAG", "Knowledge Graphs"],
     shortDescription:
       "An interactive RDF knowledge graph of AI concepts - LLMs, RAG, agentic AI, orchestration frameworks and more - queryable via a local LLM using the GraphRAG pattern, with retrieval made fully visible on the graph.",
     githubLink: "https://github.com/briangohjw/ai-knowledge-graph",
@@ -139,7 +139,7 @@ export const Projects: ProjectInterface[] = [
     id: "llm-observatory",
     companyName: "LLM Observatory",
     type: "Personal",
-    category: ["Full Stack", "Backend"],
+    category: ["LLM", "Observability", "Cost Monitoring"],
     shortDescription:
       "A self-hosted proxy and monitoring dashboard for the Anthropic API. Every LLM call flows through it, gets logged to Postgres, and surfaces in a real-time dashboard for cost, latency, and token usage.",
     githubLink: "https://github.com/briangohjw/llm-observatory/tree/main",
@@ -212,7 +212,7 @@ export const Projects: ProjectInterface[] = [
     id: "spirit-island-multiplayer-monitor",
     companyName: "Spirit Island Multiplayer Monitor",
     type: "Personal",
-    category: ["Backend"],
+    category: ["Automation", "Developer Tooling"],
     shortDescription:
       "Python background utility that watches Spirit Island's multiplayer log file and pings my phone over Telegram the moment someone joins my lobby, so I don't have to sit waiting in front of the PC.",
     githubLink:
