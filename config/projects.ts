@@ -30,6 +30,10 @@ export interface ProjectInterface {
   // Optional demo video (embed URL). Rendered as the hero on the project page,
   // and played with sound in a popup when the home card preview is clicked.
   demoVideoUrl?: string;
+  // Optional companion article (e.g. a Medium deep-dive), surfaced as a callout
+  // on the project page. articleNote is an optional framing sentence.
+  articleLink?: string;
+  articleNote?: string;
   descriptionDetails: DescriptionDetailsInterface;
   implementationDetails?: DescriptionDetailsInterface;
   futureImprovementsDetails?: DescriptionDetailsInterface;
@@ -91,22 +95,25 @@ export const Projects: ProjectInterface[] = [
     startDate: new Date("2026-06-26"),
     endDate: new Date("2026-06-26"),
     companyLogoImg: "https://res.cloudinary.com/dsvbbow4f/image/upload/v1782408912/Screenshot_2026-06-26_at_1.34.41_AM_jwfz5c.png",
+    cardPreviewGif:
+      "https://cdn.loom.com/sessions/thumbnails/f9f7521ec9c9478088761c00195ea781-702c8caa1ec33e95-full-play.gif",
+    demoVideoUrl: "https://www.loom.com/embed/f9f7521ec9c9478088761c00195ea781",
+    articleLink:
+      "https://medium.com/@briangoh.junw/building-knowledge-graphs-with-llms-what-it-takes-to-scale-5eefbffb8af2",
+    articleNote:
+      "This page is a compact demo built from a handful of my own notes. For what it actually takes to scale knowledge-graph construction with LLMs to production, I wrote up the full approach on Medium.",
     pagesInfoArr: [
       {
         title: "Knowledge Graph",
         description:
           "Interactive graph of AI concepts with physics-based layout and hover tooltips. Nodes represent technologies and ideas; edges represent semantic relationships like 'powers' and 'resolvesHallucinationUsing'. Filter by edge type or focus on a subgraph from the sidebar.",
-        imgArr: [],
-        videoArr: [],
+        imgArr: ["https://res.cloudinary.com/dsvbbow4f/image/upload/v1784441754/Screenshot_2026-07-19_at_2.15.50_PM_prgy4d.png"],
       },
       {
         title: "GraphRAG Chat",
         description:
           "Ask a question in natural language. SPARQL queries the graph to retrieve the most relevant nodes and edges, which are passed as context to a local LLM via Ollama. After answering, the retrieved nodes are highlighted on the graph - making the retrieval step fully visible and auditable, unlike vector RAG.",
-        imgArr: [],
-        videoArr: [
-          "https://player.cloudinary.com/embed/?cloud_name=dsvbbow4f&public_id=KG_Demo_AI_Test_my3bmw",
-        ],
+        imgArr: ["https://res.cloudinary.com/dsvbbow4f/image/upload/v1784441620/Screenshot_2026-07-19_at_2.13.20_PM_oozbno.png"],
       },
     ],
     descriptionDetails: {
