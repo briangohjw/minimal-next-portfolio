@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
@@ -17,6 +18,41 @@ interface ProjectPageProps {
   params: Promise<{
     projectId: string;
   }>;
+}
+
+export async function generateMetadata({
+  params,
+}: ProjectPageProps): Promise<Metadata> {
+  const { projectId } = await params;
+  const project = Projects.find((val) => val.id === projectId);
+  if (!project) return {};
+
+  const url = `${siteConfig.url}/projects/${project.id}`;
+  const title = project.companyName;
+  const description = project.shortDescription;
+  const image =
+    typeof project.companyLogoImg === "string"
+      ? project.companyLogoImg
+      : siteConfig.ogImage;
+
+  return {
+    title,
+    description,
+    alternates: { canonical: url },
+    openGraph: {
+      title,
+      description,
+      url,
+      type: "article",
+      images: [{ url: image }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [image],
+    },
+  };
 }
 
 const githubUsername = "namanbarkiya";
