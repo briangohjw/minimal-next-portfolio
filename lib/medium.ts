@@ -3,6 +3,7 @@ import Parser from "rss-parser";
 import { siteConfig } from "@/config/site";
 
 import { BlogMeta } from "./blogs";
+import { fetchOgData } from "./og";
 
 const MEDIUM_FEED_URL = `${siteConfig.links.medium}/feed`;
 
@@ -50,18 +51,21 @@ function estimateReadingTime(html: string): number {
   return Math.max(1, Math.ceil(wordCount / 200));
 }
 
-function toBlogMeta(item: MediumItem): BlogMeta | undefined {
+// Prefers the post's Open Graph metadata (exact title, description, cover
+// image) and falls back to scraping the RSS body only if the OG fetch fails.
+async function toBlogMeta(item: MediumItem): Promise<BlogMeta | undefined> {
   if (!item.link || !item.title) return undefined;
 
   const html = item.contentEncoded ?? "";
+  const og = await fetchOgData(item.link);
 
   return {
     slug: slugFromLink(item.link),
-    title: item.title,
+    title: og?.title ?? item.title,
     date: item.pubDate ?? new Date().toISOString(),
-    description: firstSentence(html),
+    description: og?.description ?? firstSentence(html),
     tags: [],
-    coverImage: firstImage(html),
+    coverImage: og?.image ?? firstImage(html),
     readingTime: estimateReadingTime(html),
     externalUrl: item.link,
   };
@@ -78,9 +82,8 @@ export async function fetchMediumPosts(): Promise<BlogMeta[]> {
     const xml = await res.text();
     const feed = await parser.parseString(xml);
 
-    return (feed.items ?? [])
-      .map(toBlogMeta)
-      .filter((post): post is BlogMeta => Boolean(post));
+    const metas = await Promise.all((feed.items ?? []).map(toBlogMeta));
+    return metas.filter((post): post is BlogMeta => Boolean(post));
   } catch {
     return [];
   }
