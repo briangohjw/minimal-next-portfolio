@@ -9,6 +9,7 @@ import ChipContainer from "@/components/ui/chip-container";
 import CustomTooltip from "@/components/ui/custom-tooltip";
 import { Projects } from "@/config/projects";
 import { siteConfig } from "@/config/site";
+import { fetchOgData } from "@/lib/og";
 import { cn, formatDateFromObj } from "@/lib/utils";
 import profileImg from "@/public/profile-img.jpg";
 
@@ -26,6 +27,10 @@ export default async function Project({ params }: ProjectPageProps) {
   if (!project) {
     redirect("/projects");
   }
+
+  const articleOg = project.articleLink
+    ? await fetchOgData(project.articleLink)
+    : null;
 
   return (
     <article className="container relative max-w-3xl py-6 lg:py-10">
@@ -142,18 +147,6 @@ export default async function Project({ params }: ProjectPageProps) {
         </div>
       )}
 
-      {project.futureImprovementsDetails && (
-        <div className="mb-7 ">
-          <h2 className="inline-block font-heading text-3xl leading-tight lg:text-3xl mb-2">
-            Future Improvements
-          </h2>
-          <ProjectDescription
-            paragraphs={project.futureImprovementsDetails.paragraphs}
-            bullets={project.futureImprovementsDetails.bullets}
-          />
-        </div>
-      )}
-
       <div className="mb-7 ">
         <h2 className="inline-block font-heading text-3xl leading-tight lg:text-3xl mb-5">
           Page Info
@@ -193,6 +186,62 @@ export default async function Project({ params }: ProjectPageProps) {
           </div>
         ))}
       </div>
+
+      {project.futureImprovementsDetails && (
+        <div className="mb-7 ">
+          <h2 className="inline-block font-heading text-3xl leading-tight lg:text-3xl mb-2">
+            Future Improvements
+          </h2>
+          <ProjectDescription
+            paragraphs={project.futureImprovementsDetails.paragraphs}
+            bullets={project.futureImprovementsDetails.bullets}
+          />
+        </div>
+      )}
+
+      {project.articleLink && (
+        <div className="mb-7">
+          <h2 className="inline-block font-heading text-3xl leading-tight lg:text-3xl mb-2">
+            Further Reading
+          </h2>
+          {project.articleNote && (
+            <p className="mb-4 text-muted-foreground">{project.articleNote}</p>
+          )}
+          <a
+            href={project.articleLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex flex-col overflow-hidden rounded-lg border border-border transition-colors hover:bg-muted sm:flex-row"
+          >
+            {articleOg?.image && (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={articleOg.image}
+                alt={articleOg.title ?? "Article preview"}
+                className="h-44 w-full object-cover sm:h-auto sm:w-56 sm:flex-shrink-0"
+              />
+            )}
+            <div className="flex flex-1 flex-col justify-center gap-1.5 p-4">
+              <span className="flex items-center gap-1.5 text-xs font-medium uppercase tracking-wide text-muted-foreground">
+                <Icons.post className="h-3.5 w-3.5" />
+                {articleOg?.siteName ?? "Medium"}
+              </span>
+              <p className="font-semibold leading-snug">
+                {articleOg?.title ?? "Read the full write-up"}
+              </p>
+              {articleOg?.description && (
+                <p className="line-clamp-3 text-sm text-muted-foreground">
+                  {articleOg.description}
+                </p>
+              )}
+              <span className="mt-1 inline-flex items-center gap-1 text-sm text-muted-foreground transition-colors group-hover:text-foreground">
+                Read on Medium
+                <Icons.externalLink className="h-3.5 w-3.5" />
+              </span>
+            </div>
+          </a>
+        </div>
+      )}
 
       <hr className="mt-12" />
       <div className="flex justify-center py-6 lg:py-10">
