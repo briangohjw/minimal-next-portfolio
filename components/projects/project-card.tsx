@@ -47,13 +47,15 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           </Button>
         </Link>
       </div>
-      <div className="absolute bottom-4 right-4 p-3 rounded-full bg-background border border-border hidden md:block">
+      {/* Project-type badge (👤 Personal / 💼 Professional). Hidden for now
+          since every project is Personal; uncomment if pro projects are added. */}
+      {/* <div className="absolute bottom-4 right-4 p-3 rounded-full bg-background border border-border hidden md:block">
         {project.type === "Personal" ? (
           <Icons.userFill className="h-4 w-4" />
         ) : (
           <Icons.work className="h-4 w-4" />
         )}
-      </div>
+      </div> */}
     </div>
   );
 }
