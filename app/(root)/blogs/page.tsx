@@ -139,9 +139,10 @@ export default async function BlogsPage() {
             {blogs.map((blog, index) => (
               <AnimatedSection
                 key={blog.slug}
-                delay={0.05 * index}
+                delay={0.05 * Math.min(index, 8)}
                 direction="up"
                 className="h-full"
+                animateOnMount
               >
                 <BlogCard blog={blog} />
               </AnimatedSection>
