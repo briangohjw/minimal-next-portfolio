@@ -10,7 +10,7 @@ import ChipContainer from "@/components/ui/chip-container";
 import CustomTooltip from "@/components/ui/custom-tooltip";
 import { Projects } from "@/config/projects";
 import { siteConfig } from "@/config/site";
-import { fetchOgData } from "@/lib/og";
+import { findMediumPostByUrl } from "@/lib/medium";
 import { cn, formatDateFromObj } from "@/lib/utils";
 import profileImg from "@/public/profile-img.jpg";
 
@@ -64,8 +64,8 @@ export default async function Project({ params }: ProjectPageProps) {
     redirect("/projects");
   }
 
-  const articleOg = project.articleLink
-    ? await fetchOgData(project.articleLink)
+  const articlePost = project.articleLink
+    ? await findMediumPostByUrl(project.articleLink)
     : null;
 
   return (
@@ -249,25 +249,25 @@ export default async function Project({ params }: ProjectPageProps) {
             rel="noopener noreferrer"
             className="group flex flex-col overflow-hidden rounded-lg border border-border transition-colors hover:bg-muted sm:flex-row"
           >
-            {articleOg?.image && (
+            {articlePost?.coverImage && (
               // eslint-disable-next-line @next/next/no-img-element
               <img
-                src={articleOg.image}
-                alt={articleOg.title ?? "Article preview"}
+                src={articlePost.coverImage}
+                alt={articlePost.title ?? "Article preview"}
                 className="h-44 w-full object-cover sm:h-auto sm:w-56 sm:flex-shrink-0"
               />
             )}
             <div className="flex flex-1 flex-col justify-center gap-1.5 p-4">
               <span className="flex items-center gap-1.5 text-xs font-medium uppercase tracking-wide text-muted-foreground">
                 <Icons.post className="h-3.5 w-3.5" />
-                {articleOg?.siteName ?? "Medium"}
+                Medium
               </span>
               <p className="font-semibold leading-snug">
-                {articleOg?.title ?? "Read the full write-up"}
+                {articlePost?.title ?? "Read the full write-up"}
               </p>
-              {articleOg?.description && (
+              {articlePost?.description && (
                 <p className="line-clamp-3 text-sm text-muted-foreground">
-                  {articleOg.description}
+                  {articlePost.description}
                 </p>
               )}
               <span className="mt-1 inline-flex items-center gap-1 text-sm text-muted-foreground transition-colors group-hover:text-foreground">

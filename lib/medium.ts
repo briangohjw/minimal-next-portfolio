@@ -3,7 +3,6 @@ import Parser from "rss-parser";
 import { siteConfig } from "@/config/site";
 
 import { BlogMeta } from "./blogs";
-import { fetchOgData } from "./og";
 
 const MEDIUM_FEED_URL = `${siteConfig.links.medium}/feed`;
 
@@ -51,21 +50,18 @@ function estimateReadingTime(html: string): number {
   return Math.max(1, Math.ceil(wordCount / 200));
 }
 
-// Prefers the post's Open Graph metadata (exact title, description, cover
-// image) and falls back to scraping the RSS body only if the OG fetch fails.
-async function toBlogMeta(item: MediumItem): Promise<BlogMeta | undefined> {
+function toBlogMeta(item: MediumItem): BlogMeta | undefined {
   if (!item.link || !item.title) return undefined;
 
   const html = item.contentEncoded ?? "";
-  const og = await fetchOgData(item.link);
 
   return {
     slug: slugFromLink(item.link),
-    title: og?.title ?? item.title,
+    title: item.title,
     date: item.pubDate ?? new Date().toISOString(),
-    description: og?.description ?? firstSentence(html),
+    description: firstSentence(html),
     tags: [],
-    coverImage: og?.image ?? firstImage(html),
+    coverImage: firstImage(html),
     readingTime: estimateReadingTime(html),
     externalUrl: item.link,
   };
@@ -82,9 +78,24 @@ export async function fetchMediumPosts(): Promise<BlogMeta[]> {
     const xml = await res.text();
     const feed = await parser.parseString(xml);
 
-    const metas = await Promise.all((feed.items ?? []).map(toBlogMeta));
-    return metas.filter((post): post is BlogMeta => Boolean(post));
+    return (feed.items ?? [])
+      .map(toBlogMeta)
+      .filter((post): post is BlogMeta => Boolean(post));
   } catch {
     return [];
   }
+}
+
+/**
+ * Finds a single post from the Medium feed by its article URL (query params
+ * ignored), so a project page can reuse the same title / cover image /
+ * first-sentence as the blog cards. Returns undefined if the article isn't in
+ * the feed — Medium's RSS only carries the ~10 most recent posts.
+ */
+export async function findMediumPostByUrl(
+  url: string
+): Promise<BlogMeta | undefined> {
+  const target = slugFromLink(url);
+  const posts = await fetchMediumPosts();
+  return posts.find((post) => post.slug === target);
 }
