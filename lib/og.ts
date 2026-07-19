@@ -17,8 +17,9 @@ function decodeHtmlEntities(input: string): string {
 }
 
 // Fetches Open Graph / Twitter card metadata for a URL, server-side.
-// Cached for a day so we don't refetch on every request. Returns null on any
-// failure (blocked, offline, no tags) so callers can fall back gracefully.
+// Cached for an hour so edits on the source (e.g. a Medium description) show up
+// within ~an hour. Returns null on any failure (blocked, offline, no tags) so
+// callers can fall back gracefully.
 export async function fetchOgData(url: string): Promise<OgData | null> {
   try {
     const res = await fetch(url, {
@@ -26,7 +27,7 @@ export async function fetchOgData(url: string): Promise<OgData | null> {
         "User-Agent":
           "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36",
       },
-      next: { revalidate: 86400 },
+      next: { revalidate: 3600 },
     });
     if (!res.ok) return null;
     const html = await res.text();
